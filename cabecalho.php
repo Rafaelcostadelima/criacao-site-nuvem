@@ -13,6 +13,6 @@
         <div class="hero-content">
             <img src="img/angrybirds.jfif" alt="Logo Angry Birds" class="hero-logo">
             <h1>Angry Birds</h1>
-            <p class="hero-subtitle">Jogos e Filmes</p>
+            <p class="hero-subtitle">Jogos e Filme</p>
         </div>
     </header>
