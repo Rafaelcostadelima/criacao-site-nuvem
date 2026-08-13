@@ -158,3 +158,73 @@ body {
         max-width: 60%;
     }
 }
+
+ body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 40px;
+        }
+        /* CSS Grid para organizar os cards lado a lado */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px); /* Efeito de pular ao passar o mouse */
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 20px;
+        }
+        .card-title {
+            margin: 0 0 10px 0;
+            font-size: 1.2rem;
+        }
+        .card-year {
+            font-weight: bold;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        /* Etiquetas (Badges) coloridas para diferenciar os tipos */
+        .badge {
+            display: block;             /* Muda o comportamento para bloco */
+            width: fit-content;         /* Faz a caixinha ter apenas o tamanho do texto */
+            margin: 0 auto 15px auto;   /* O "auto" nas laterais faz a mágica de centralizar! */
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+        .badge.jogo { background-color: #e74c3c; } /* Vermelho para Jogos */
+        .badge.filme { background-color: #2980b9; } /* Azul para Filmes */
+        .badge.serie { background-color: #f39c12; } /* Amarelo/Laranja para Séries */
+        
+        .card-desc {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #555;
+        }
