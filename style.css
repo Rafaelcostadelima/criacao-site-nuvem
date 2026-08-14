@@ -1,4 +1,6 @@
-/* Configurações Globais */
+/* ==========================================
+   1. CONFIGURAÇÕES GLOBAIS E RESET
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
@@ -6,26 +8,51 @@
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #f5f6f8;
+    font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f9;
     color: #333333;
     line-height: 1.6;
+    margin: 0;
+    padding: 0; /* Garante que o banner fique encostado nas bordas da tela */
 }
 
-/* Container de conteúdo */
+/* ==========================================
+   2. CONTAINERS (ORGANIZAÇÃO DE CONTEÚDO)
+   ========================================== */
+/* Container padrão para centralizar o conteúdo */
 .container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 20px; /* Adiciona o espaçamento nas laterais apenas aqui */
 }
 
-/* Seção de Destaque (Hero) */
+/* Grid para os novos cards de filmes/jogos */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px; /* Mantém os cards afastados da borda da tela */
+}
+
+/* Grid Layout para as seções de texto (index.php antigo) */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+/* ==========================================
+   3. BANNER PRINCIPAL (HERO)
+   ========================================== */
 .hero-section {
     background-color: #e52d2d; /* Vermelho característico */
     color: #ffffff;
     text-align: center;
     padding: 50px 20px;
     border-bottom: 5px solid #fcc200; /* Linha amarela de destaque */
+    width: 100%; /* Força a ocupação total da largura */
 }
 
 .hero-content {
@@ -54,13 +81,22 @@ body {
     opacity: 0.9;
 }
 
-/* Cards de Conteúdo */
+/* ==========================================
+   4. COMPONENTES: CARDS (Gerais e Grid)
+   ========================================== */
 .card {
     background-color: #ffffff;
     border-radius: 12px;
     padding: 30px;
     margin-bottom: 25px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito de pular ao passar o mouse */
+.card:hover {
+    transform: translateY(-8px); 
 }
 
 .card h2 {
@@ -78,7 +114,50 @@ body {
     text-align: justify;
 }
 
-/* Mídias responsivas */
+/* Estilo específico para imagens dentro de cards do Grid */
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-title {
+    margin: 0 0 10px 0;
+    font-size: 1.2rem;
+}
+
+.card-year {
+    font-weight: bold;
+    color: #7f8c8d;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* ==========================================
+   5. ETIQUETAS (BADGES)
+   ========================================== */
+.badge {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 15px auto; /* Centraliza a etiqueta horizontalmente */
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: white;
+}
+.badge.jogo  { background-color: #e74c3c; } /* Vermelho */
+.badge.filme { background-color: #2980b9; } /* Azul */
+.badge.serie { background-color: #f39c12; } /* Amarelo/Laranja */
+
+/* ==========================================
+   6. MÍDIAS RESPONSIVAS (Gameplay, etc.)
+   ========================================== */
 .media-container {
     text-align: center;
     margin-top: 15px;
@@ -91,14 +170,9 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Grid Layout para telas maiores */
-.grid-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 25px;
-}
-
-/* Estilo para a Seção de Personagens */
+/* ==========================================
+   7. SEÇÃO DE PERSONAGENS
+   ========================================== */
 .characters-container {
     display: flex;
     flex-direction: column;
@@ -126,14 +200,16 @@ body {
 }
 
 .characters-list li:hover {
-    background-color: #fff9e6; /* Leve destaque amarelo ao passar o mouse */
+    background-color: #fff9e6; /* Leve destaque amarelo */
 }
 
 .characters-list li strong {
     color: #e52d2d;
 }
 
-/* Responsividade (Celulares e Tablets) */
+/* ==========================================
+   8. MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================== */
 @media (max-width: 768px) {
     .grid-layout {
         grid-template-columns: 1fr;
@@ -146,7 +222,7 @@ body {
 
 @media (min-width: 769px) {
     .characters-container {
-        flex-direction: row; /* Imagem do lado da lista em telas grandes */
+        flex-direction: row; /* Imagem ao lado da lista em telas maiores */
         align-items: flex-start;
     }
     
@@ -159,72 +235,345 @@ body {
     }
 }
 
- body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            color: #000000;
-            margin-bottom: 40px;
-        }
-        /* CSS Grid para organizar os cards lado a lado */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .card {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-        .card:hover {
-            transform: translateY(-8px); /* Efeito de pular ao passar o mouse */
-        }
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-        .card-content {
-            padding: 20px;
-        }
-        .card-title {
-            margin: 0 0 10px 0;
-            font-size: 1.2rem;
-        }
-        .card-year {
-            font-weight: bold;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-        /* Etiquetas (Badges) coloridas para diferenciar os tipos */
-        .badge {
-            display: block;             /* Muda o comportamento para bloco */
-            width: fit-content;         /* Faz a caixinha ter apenas o tamanho do texto */
-            margin: 0 auto 15px auto;   /* O "auto" nas laterais faz a mágica de centralizar! */
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: white;
-        }
-        .badge.jogo { background-color: #e74c3c; } /* Vermelho para Jogos */
-        .badge.filme { background-color: #2980b9; } /* Azul para Filmes */
-        .badge.serie { background-color: #f39c12; } /* Amarelo/Laranja para Séries */
-        
-        .card-desc {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #555;
-        }
+/* ==========================================
+   9. BOTÃO SAIBA MAIS
+   ========================================== */
+.button-container {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.btn-saiba-mais {
+    display: inline-block;
+    background-color: #fcc200; /* Amarelo característico */
+    color: #333333;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px 40px;
+    border-radius: 30px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease; /* Transição suave de cor e efeito */
+}
+
+/* Efeito ao passar o mouse */
+.btn-saiba-mais:hover {
+    background-color: #e52d2d; /* Muda para vermelho */
+    color: #ffffff; /* Letra fica branca */
+    transform: translateY(-3px); /* Sobe levemente */
+    box-shadow: 0 6px 15px rgba(229, 45, 45, 0.3); /* Sombra avermelhada */
+}
+
+/* ==========================================
+   10. TELA DE LOGIN
+   ========================================== */
+.login-body {
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 40px 30px;
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-logo {
+    max-width: 100px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-card h2 {
+    font-size: 1.5rem;
+    color: #333333;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* Campos de entrada */
+.input-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #555555;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+    border-color: #e52d2d; /* Destaca a borda em vermelho ao clicar */
+}
+
+/* Botão de envio */
+.btn-login {
+    width: 100%;
+    background-color: #e52d2d;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 3px 8px rgba(229, 45, 45, 0.2);
+}
+
+.btn-login:hover {
+    background-color: #c62828;
+}
+
+.btn-login:active {
+    transform: scale(0.98);
+}
+
+/* Mensagem de Erro */
+.error-msg {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* ==========================================
+   11. ELEMENTOS ADICIONAIS DE AUTENTICAÇÃO
+   ========================================== */
+
+/* Mensagem de cadastro realizado com sucesso */
+.success-msg {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #c8e6c9;
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Link para alternar entre Login e Cadastro */
+.auth-switch {
+    margin-top: 25px;
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.auth-switch a {
+    color: #e52d2d;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================
+   TÍTULO DA LINHA DO TEMPO
+   ========================================== */
+.timeline-header {
+    text-align: center;
+    padding: 40px 20px 20px 20px;
+}
+
+.timeline-subtitle {
+    display: inline-block;
+    color: #e52d2d;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+}
+
+.timeline-title {
+    font-size: 2rem;
+    color: #222222;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Linha de detalhe amarela embaixo do título */
+.title-bar {
+    width: 60px;
+    height: 4px;
+    background-color: #fcc200;
+    margin: 12px auto 0 auto;
+    border-radius: 2px;
+}
+
+/* ==========================================
+   GRID E CARDS MODERNIZADOS
+   ========================================== */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 60px 20px;
+}
+
+.timeline-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #eeeeee;
+}
+
+/* Efeito ao passar o mouse */
+.timeline-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Contêiner da Imagem com efeito Zoom */
+.card-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.timeline-card:hover .card-img-wrapper img {
+    transform: scale(1.06); /* Leve zoom na imagem ao passar o mouse */
+}
+
+/* ==========================================
+   ETIQUETAS (BADGES) FLUTUANTES
+   ========================================== */
+.badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.badge.jogo  { background-color: #e52d2d; } /* Vermelho */
+.badge.filme { background-color: #0288d1; } /* Azul */
+.badge.serie { background-color: #f57c00; } /* Laranja */
+
+/* ==========================================
+   CONTEÚDO DO CARD
+   ========================================== */
+.card-content {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Garante que todos os cards fiquem alinhados na mesma altura */
+}
+
+.card-year {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #888888;
+    margin-bottom: 6px;
+    display: block;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #222222;
+    margin: 0 0 10px 0;
+    line-height: 1.3;
+}
+
+.card-desc {
+    font-size: 0.9rem;
+    color: #666666;
+    line-height: 1.5;
+    margin-top: auto; /* Empurra o texto para baixo mantendo harmonia */
+}
+
+/* Ajuste em telas menores (Celulares) */
+@media (max-width: 600px) {
+    .timeline-title {
+        font-size: 1.6rem;
+    }
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+        padding: 10px 15px 40px 15px;
+    }
+}
+
+/* Botão de Logout */
+.logout-container {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.btn-logout {
+    display: inline-block;
+    background-color: transparent;
+    color: #e52d2d;
+    border: 2px solid #e52d2d;
+    padding: 6px 18px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #e52d2d;
+    color: #ffffff;
+}
